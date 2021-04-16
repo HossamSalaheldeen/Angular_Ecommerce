@@ -7,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  products : Product;
+  selectedproducts: any[];
+  total: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedproducts = JSON.parse(localStorage.getItem('selectedProducts'));
+    this.total = 0;
+    for(let selectedproduct of this.selectedproducts){
+      this.total = this.total + (selectedproduct.price * selectedproduct.quantity);
+    }
+   
+    console.log(this.selectedproducts);
   }
 
 }

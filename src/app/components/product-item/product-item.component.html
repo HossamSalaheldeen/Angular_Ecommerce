@@ -3,7 +3,7 @@
         <h5 class="card-title text-primary">{{product?.Name | titlecase}}</h5>
         <div class="card-body">
         <img [src]="product?.ProductPicUrl" class="card-img-top">
-        <p class="card-text text-danger">{{product?.Price | currency}}</p>
+        <p class="card-text text-danger">{{product?.Price | currency:'EUR':true}}</p>
         <button class="btn btn-primary" >Add to cart</button>
         </div>
     </div>

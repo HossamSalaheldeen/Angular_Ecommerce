@@ -1,3 +1,9 @@
+<div class="row" *ngIf="errors?.length">
+    <div class="alert alert-danger" *ngFor="let error of errors">
+        {{error}}
+    </div>
+</div>
+
 <div class="row mt-5" *ngIf="product; else loadingTemplate">
     
     <div class="col col-md-4 sm-col-12">
@@ -6,15 +12,27 @@
 
     <div class="col col-md-4 sm-col-12">
         <h6>Accessories</h6>
+        <p>{{product.Description}}</p>
     </div>
 
     <div class="col col-md-4 sm-col-12">
         <div class="card">
-            <h5 class="card-header">Availability</h5>
+            <h5 class="card-header">{{product.Status}}</h5>
             <div class="card-body">
-              <h5 class="card-title">Price</h5>
-              <input type="number">
-              <button class="btn btn-primary">add to cart</button>
+              <h5 class="card-title">{{product?.Price | currency:'EUR':true}}</h5>
+              <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+                
+                <div  class="form-group row">
+                    <label style="font-weight: bold;" for="inputQuantity" class="col-xl-6 col-lg-12 col-sm-12 col-md-12 col-form-label">Quantity:</label>
+                    <div class="col-xl-6 col-lg-12 col-sm-12 col-md-12">
+                        <input type="hidden" formControlName="image" value={{product?.ProductPicUrl}}>
+                        <input type="hidden" formControlName="name" value={{product?.Name}}>
+                        <input type="hidden" formControlName="price" value={{product?.Price}}>
+                        <input type="number" class="form-control" formControlName="quantity">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary" [disabled]="productForm.invalid">Add to cart</button>
+              </form>
             </div>
         </div>
     </div>
@@ -22,5 +40,5 @@
     
  
 </div>
-
+<span>{{product | json}}</span>
 <ng-template #loadingTemplate>loading.....</ng-template>

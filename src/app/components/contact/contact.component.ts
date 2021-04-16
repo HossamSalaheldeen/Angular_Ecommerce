@@ -22,7 +22,6 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    //console.log(form);
     if(form.valid) {
       const msg = form.value;
       this._contactService.SendMessage(msg).subscribe(
