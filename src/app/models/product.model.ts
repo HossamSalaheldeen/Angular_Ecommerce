@@ -1,0 +1,22 @@
+export interface Product{
+    Category:string;
+    CurrencyCode:string;
+    DateOfSale:String;
+    Depth:number;
+    Description:string;
+    DimUnit:string;
+    Height:number;
+    MainCategory:string;
+    Name:string;
+    Price:number;
+    ProductId:string;
+    ProductPicUrl:string;
+    Quantity:number;
+    Status:string;
+    SupplierName:string;
+    TaxTarifCode:string;
+    UoM:string;
+    WeightMeasure:number;
+    WeightUnit:string;
+    Width:number;
+}

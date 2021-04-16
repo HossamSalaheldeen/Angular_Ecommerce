@@ -1,0 +1,23 @@
+<h1 class="text-center mt-4">Cart</h1>
+
+<table class="table table-hover mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; index as i">
+        <th scope="row">1</th>
+        <td>product.ProductPicUrl</td>
+        <td>product.Name</td>
+        <td>product.Price</td>
+        <td>Quantity</td>
+        <td>Total</td>
+      </tr>
+    </tbody>
+  </table>

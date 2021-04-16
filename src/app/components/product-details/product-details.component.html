@@ -1,0 +1,26 @@
+<div class="row mt-5" *ngIf="product; else loadingTemplate">
+    
+    <div class="col col-md-4 sm-col-12">
+        <img [src]="product?.ProductPicUrl" class="card-img-top">
+    </div>
+
+    <div class="col col-md-4 sm-col-12">
+        <h6>Accessories</h6>
+    </div>
+
+    <div class="col col-md-4 sm-col-12">
+        <div class="card">
+            <h5 class="card-header">Availability</h5>
+            <div class="card-body">
+              <h5 class="card-title">Price</h5>
+              <input type="number">
+              <button class="btn btn-primary">add to cart</button>
+            </div>
+        </div>
+    </div>
+    
+    
+ 
+</div>
+
+<ng-template #loadingTemplate>loading.....</ng-template>

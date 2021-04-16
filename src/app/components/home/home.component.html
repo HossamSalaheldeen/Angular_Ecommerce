@@ -1,0 +1,6 @@
+<div class="row" *ngIf="products; else homeLoadingTemplate">
+    <app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
+</div>
+
+
+<ng-template #homeLoadingTemplate>loading.....</ng-template>
