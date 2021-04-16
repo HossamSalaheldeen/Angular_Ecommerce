@@ -8,6 +8,7 @@
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">Total</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +16,13 @@
         <td><img [src]="selectedproduct.image" class="card-img-top"></td>
         <td>{{selectedproduct.name}}</td>
         <td>{{selectedproduct.price | currency:'EUR':true}}</td>
-        <td>{{selectedproduct.quantity}}</td>
+        <td><input type="number" [(ngModel)]="selectedproduct.quantity"></td>
         <td>{{selectedproduct.price * selectedproduct.quantity | currency:'EUR':true}} </td>
+        <td>
+          <button class="btn btn-danger mr-3" (click)="Delete(i)">Delete</button>
+          <button class="btn btn-success mr-3" (click)="Save(i)">Save</button>
+          <button class="btn btn-primary" (click)="Checkout(i)">Checkout</button>
+        </td>
       </tr>
     </tbody>
 </table>

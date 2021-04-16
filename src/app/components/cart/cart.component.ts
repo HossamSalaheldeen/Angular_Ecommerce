@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   selectedproducts: any[];
+  status: boolean;
   total: number;
   constructor() { }
 
@@ -17,8 +18,21 @@ export class CartComponent implements OnInit {
     for(let selectedproduct of this.selectedproducts){
       this.total = this.total + (selectedproduct.price * selectedproduct.quantity);
     }
-   
+    this.status = false;
     console.log(this.selectedproducts);
+  }
+
+  Delete(index) {
+    this.selectedproducts.splice(index,1);
+    localStorage.setItem('selectedProducts',JSON.stringify(this.selectedproducts));
+  }
+
+  Save(index) {
+    localStorage.setItem('selectedProducts',JSON.stringify( this.selectedproducts));
+  }
+
+  Checkout(index) {
+    this.status = true;
   }
 
 }
