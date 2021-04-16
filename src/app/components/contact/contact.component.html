@@ -1,22 +1,44 @@
-<form class="mt-4">
+<div class="row" *ngIf="errors?.length">
+    <div class="alert alert-danger" *ngFor="let error of errors">
+        {{error}}
+    </div>
+</div>
+
+<form class="mt-4" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputName">Name*</label>
-            <input type="text" class="form-control" id="inputName">
+            <input type="text" class="form-control" id="inputName" formControlName="name">
+            <div class="alert alert-danger p-1 mt-1"
+            *ngIf="contactForm.get('name').dirty && contactForm.get('name').hasError('required')" >
+                Name field is required
+            </div>
         </div>
         <div class="form-group col-md-6">
             <label for="inputEmail">Email*</label>
-            <input type="email" class="form-control" id="inputEmail" >
+            <input type="email" class="form-control" id="inputEmail" formControlName="email">
+            <div class="alert alert-danger p-1 mt-1"
+            *ngIf="contactForm.get('email').dirty && contactForm.get('email').hasError('required')" >
+                Email field is required
+            </div>
         </div>
     </div>
     <div class="form-group">
         <label for="inputSubject">Subject*</label>
-        <input type="text" class="form-control" id="inputSubject" >
+        <input type="text" class="form-control" id="inputSubject" formControlName="subject">
+        <div class="alert alert-danger p-1 mt-1"
+            *ngIf="contactForm.get('subject').dirty && contactForm.get('subject').hasError('required')" >
+                Subject field is required
+        </div>
     </div>
     <div class="form-group">
         <label for="inputMessage">Message*</label>
-        <textarea type="text" id="inputMessage" class="form-control" rows="6"></textarea>
+        <textarea type="text" id="inputMessage" class="form-control" rows="6" formControlName="message"></textarea>
+        <div class="alert alert-danger p-1 mt-1"
+            *ngIf="contactForm.get('message').dirty && contactForm.get('message').hasError('required')" >
+                Message field is required
+        </div>
     </div>
     
-    <button type="submit" class="btn btn-secondary">Send Message</button>
+    <button type="submit" class="btn btn-secondary" [disabled]="contactForm.invalid">Send Message</button>
 </form>

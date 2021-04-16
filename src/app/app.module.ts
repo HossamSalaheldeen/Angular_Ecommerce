@@ -12,6 +12,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
