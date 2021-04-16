@@ -44,7 +44,7 @@ export class ProductDetailsComponent implements OnInit {
       image: [this.product.ProductPicUrl],
       name: [this.product.Name],
       price: [this.product.Price],
-      quantity: [0, [Validators.required,Validators.min(1)]],
+      quantity: [0, [Validators.required,Validators.min(1),Validators.max(this.product.Quantity)]],
     })
   }
 

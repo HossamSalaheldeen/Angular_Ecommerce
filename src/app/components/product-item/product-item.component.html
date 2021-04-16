@@ -4,8 +4,7 @@
         <div class="card-body">
         <img [src]="product?.ProductPicUrl" class="card-img-top" [routerLink]="[product.ProductId]">
         <p class="card-text text-danger">{{product?.Price | currency:'EUR':true}}</p>
-        <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
-                
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">  
             <div  class="form-group row">
                 <label style="font-weight: bold;" for="inputQuantity" class="col-xl-6 col-lg-12 col-sm-12 col-md-12 col-form-label">Quantity:</label>
                 <div class="col-xl-6 col-lg-12 col-sm-12 col-md-12">
@@ -13,6 +12,18 @@
                     <input type="hidden" formControlName="name" value={{product?.Name}}>
                     <input type="hidden" formControlName="price" value={{product?.Price}}>
                     <input type="number" class="form-control" formControlName="quantity">
+                    <div class="alert alert-danger p-1 mt-1"
+                    *ngIf="productForm.get('quantity').dirty && productForm.get('quantity').hasError('required')" >
+                        Quantity field is required
+                    </div>
+                    <div class="alert alert-danger p-1 mt-1"
+                    *ngIf="productForm.get('quantity').dirty && productForm.get('quantity').hasError('min')" >
+                        Quantity field min value = 0
+                    </div>
+                    <div class="alert alert-danger p-1 mt-1"
+                    *ngIf="productForm.get('quantity').dirty && productForm.get('quantity').hasError('max')" >
+                        Quantity field max value = {{product?.Quantity}}
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-secondary" [disabled]="productForm.invalid">Add to cart</button>
