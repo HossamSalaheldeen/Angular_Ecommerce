@@ -1,10 +1,22 @@
 <div class="col col-12 col-md-6 col-lg-3">
-    <div class="card mt-4" style="width: 21rem;" [routerLink]="[product.ProductId]">
+    <div class="card mt-4" style="width: 21rem;" >
         <h5 class="card-title text-primary">{{product?.Name | titlecase}}</h5>
         <div class="card-body">
-        <img [src]="product?.ProductPicUrl" class="card-img-top">
+        <img [src]="product?.ProductPicUrl" class="card-img-top" [routerLink]="[product.ProductId]">
         <p class="card-text text-danger">{{product?.Price | currency:'EUR':true}}</p>
-        <button class="btn btn-primary" >Add to cart</button>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+                
+            <div  class="form-group row">
+                <label style="font-weight: bold;" for="inputQuantity" class="col-xl-6 col-lg-12 col-sm-12 col-md-12 col-form-label">Quantity:</label>
+                <div class="col-xl-6 col-lg-12 col-sm-12 col-md-12">
+                    <input type="hidden" formControlName="image" value={{product?.ProductPicUrl}}>
+                    <input type="hidden" formControlName="name" value={{product?.Name}}>
+                    <input type="hidden" formControlName="price" value={{product?.Price}}>
+                    <input type="number" class="form-control" formControlName="quantity">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary" [disabled]="productForm.invalid">Add to cart</button>
+          </form>
         </div>
     </div>
 </div>

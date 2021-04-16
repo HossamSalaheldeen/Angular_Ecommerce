@@ -1,3 +1,4 @@
+import { SaveProductService } from './../../services/save-product.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ProductsService } from './../../services/products.service';
 import { Product } from './../../models/product.model';
@@ -16,7 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   selectedProduct: any = {};
   productForm: FormGroup;
 
-  constructor(private _route: ActivatedRoute, private _productService : ProductsService, private _fb: FormBuilder) { }
+  constructor(private _route: ActivatedRoute, private _productService : ProductsService, private _fb: FormBuilder, private _saveProductService:SaveProductService) { }
 
   ngOnInit(): void {
     this._route.paramMap.subscribe(paramMap => {
@@ -33,7 +34,7 @@ export class ProductDetailsComponent implements OnInit {
   onSubmit(form: FormGroup) {
     if(form.valid) {
       this.selectedProduct = Object.assign(this.selectedProduct,form.value);
-      this.saveSelectedProduct(this.selectedProduct);
+      this._saveProductService.saveSelectedProduct(this.selectedProduct);
       
     }
   }
@@ -47,25 +48,6 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  saveSelectedProduct(selectedProduct) {
-    let selectedProducts = [];
-    let productIndex : number;
-    if(localStorage.getItem('selectedProducts')) {
-      selectedProducts = JSON.parse(localStorage.getItem('selectedProducts'));
-      if(selectedProducts.some(product => product.name === selectedProduct.name)){
-        productIndex = selectedProducts.findIndex((product => product.name == selectedProduct.name));
-        selectedProducts[productIndex].quantity = selectedProduct.quantity;
-      }else {
-        selectedProducts.push(selectedProduct);
-      }
-      
-      //selectedProducts = [selectedProduct, ...selectedProducts];
-    }
-    else {
-      selectedProducts = [selectedProduct];
-    }
-    localStorage.setItem('selectedProducts',JSON.stringify(selectedProducts));
-  }
 
 
 }
