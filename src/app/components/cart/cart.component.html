@@ -21,7 +21,10 @@
         <td>
           <button class="btn btn-danger mr-3" (click)="Delete(i)">Delete</button>
           <button class="btn btn-success mr-3" (click)="Save(i)">Save</button>
-          <button class="btn btn-primary" (click)="Checkout(i)">Checkout</button>
+          <button class="btn btn-primary" (click)="Checkout(i)">
+            <span *ngIf="!status[i]; else sent_content">Checkout</span>
+            <ng-template #sent_content> <span>Shiped</span> </ng-template>
+          </button>
         </td>
       </tr>
     </tbody>
