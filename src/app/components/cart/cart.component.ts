@@ -8,17 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   selectedproducts: any[];
-  status: boolean;
+  status: boolean[]= [false];
   total: number;
+  
   constructor() { }
 
   ngOnInit(): void {
     this.selectedproducts = JSON.parse(localStorage.getItem('selectedProducts'));
     this.total = 0;
+    let i = 0;
     for(let selectedproduct of this.selectedproducts){
       this.total = this.total + (selectedproduct.price * selectedproduct.quantity);
+      this.status[i] = false;
+      i = i + 1;
+      console.log(this.status)
     }
-    this.status = false;
+    
     console.log(this.selectedproducts);
   }
 
@@ -32,7 +37,7 @@ export class CartComponent implements OnInit {
   }
 
   Checkout(index) {
-    this.status = true;
+    this.status[index] = true;
   }
 
 }
