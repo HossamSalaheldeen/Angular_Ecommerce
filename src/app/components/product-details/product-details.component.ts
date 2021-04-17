@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ProductsService } from './../../services/products.service';
 import { Product } from './../../models/product.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   selectedProduct: any = {};
   productForm: FormGroup;
 
-  constructor(private _route: ActivatedRoute, private _productService : ProductsService, private _fb: FormBuilder, private _saveProductService:SaveProductService) { }
+  constructor(private _route: ActivatedRoute, private _productService : ProductsService, private _fb: FormBuilder, private _saveProductService:SaveProductService,private _router: Router) { }
 
   ngOnInit(): void {
     this._route.paramMap.subscribe(paramMap => {
@@ -35,7 +35,7 @@ export class ProductDetailsComponent implements OnInit {
     if(form.valid) {
       this.selectedProduct = Object.assign(this.selectedProduct,form.value);
       this._saveProductService.saveSelectedProduct(this.selectedProduct);
-      
+      this._router.navigate(['/cart']);
     }
   }
 

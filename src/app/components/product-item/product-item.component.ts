@@ -11,6 +11,7 @@ export class ProductItemComponent implements OnInit {
   @Input() product;
   selectedProduct: any = {};
   productForm: FormGroup;
+  isSubmitted : boolean = false;
   constructor(private _fb: FormBuilder, private _saveProductService:SaveProductService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class ProductItemComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     if(form.valid) {
+      this.isSubmitted = true;
       this.selectedProduct = Object.assign(this.selectedProduct,form.value);
       this._saveProductService.saveSelectedProduct(this.selectedProduct);
       

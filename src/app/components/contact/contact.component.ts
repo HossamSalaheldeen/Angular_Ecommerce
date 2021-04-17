@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   errors = [];
-
   success_msg: string = '';
 
   contactForm: FormGroup = this._fb.group({

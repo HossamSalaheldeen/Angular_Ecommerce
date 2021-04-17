@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4">Cart</h1>
 
-<table class="table table-hover mt-4" *ngIf="selectedproducts; else noItemTemplate">
+<table class="table table-hover mt-4" *ngIf="selectedproducts.length; else noItemTemplate">
     <thead>
       <tr>
         <th scope="col">Image</th>
@@ -30,7 +30,7 @@
     </tbody>
 </table>
 
-<div class="card" *ngIf="selectedproducts;">
+<div class="card" *ngIf="selectedproducts.length;">
   <h5 class="card-header">Cart Totals</h5>
   <div class="card-body">
     <div class="row">

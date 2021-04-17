@@ -8,9 +8,9 @@
             <div  class="form-group row">
                 <label style="font-weight: bold;" for="inputQuantity" class="col-xl-6 col-lg-12 col-sm-12 col-md-12 col-form-label">Quantity:</label>
                 <div class="col-xl-6 col-lg-12 col-sm-12 col-md-12">
-                    <input type="hidden" formControlName="image" value={{product?.ProductPicUrl}}>
-                    <input type="hidden" formControlName="name" value={{product?.Name}}>
-                    <input type="hidden" formControlName="price" value={{product?.Price}}>
+                    <input type="hidden" formControlName="image">
+                    <input type="hidden" formControlName="name">
+                    <input type="hidden" formControlName="price">
                     <input type="number" class="form-control" formControlName="quantity">
                     <div class="alert alert-danger p-1 mt-1"
                     *ngIf="productForm.get('quantity').dirty && productForm.get('quantity').hasError('required')" >
@@ -27,6 +27,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-secondary btn-block" [disabled]="productForm.invalid">Add to cart</button>
+            <div class="alert alert-success" *ngIf="isSubmitted"> {{product?.Name}} added successfully to cart</div>
           </form>
         </div>
     </div>
