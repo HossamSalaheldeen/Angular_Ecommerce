@@ -1,3 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~font-awesome/css/font-awesome.min.css';
+
+* {
+      -webkit-border-radius: 15px !important;
+         -moz-border-radius: 15px !important;
+              border-radius: 15px !important;
+
+  }
