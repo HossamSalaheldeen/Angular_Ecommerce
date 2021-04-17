@@ -16,7 +16,7 @@
         <td><img [src]="selectedproduct.image" class="card-img-top"></td>
         <td>{{selectedproduct.name}}</td>
         <td>{{selectedproduct.price | currency:'EUR':true}}</td>
-        <td><input type="number" [(ngModel)]="selectedproduct.quantity"></td>
+        <td><input type="number" min="0" [(ngModel)]="selectedproduct.quantity"></td>
         <td>{{selectedproduct.price * selectedproduct.quantity | currency:'EUR':true}} </td>
         <td>
           <button class="btn btn-danger mr-3" (click)="Delete(i)">Delete</button>
@@ -43,7 +43,7 @@
             <span *ngIf="!status_all; else sent_content">Checkout All</span>
             <ng-template #sent_content> <span>Shiped</span> </ng-template>
           </button>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
@@ -52,5 +52,5 @@
   <!-- <span>{{selectedproducts | json}}</span> -->
 
   <ng-template #noItemTemplate>
-    <div class="alert alert-danger">No products are selected</div>
+    <div class="alert alert-danger text-center">Cart is Empty</div>
   </ng-template>

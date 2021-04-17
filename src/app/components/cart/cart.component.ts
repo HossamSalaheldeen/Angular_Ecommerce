@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
   Delete(index) {
     this.selectedproducts.splice(index, 1);
     console.log(this.selectedproducts);
-    if (this.selectedproducts.length) {
+    if (this.selectedproducts.length == 0) {
       this.Delete_All();
       console.log(this.selectedproducts.length);
     } else {
