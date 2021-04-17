@@ -30,12 +30,20 @@
     </tbody>
 </table>
 
-<div class="card">
+<div class="card" *ngIf="selectedproducts;">
   <h5 class="card-header">Cart Totals</h5>
   <div class="card-body">
     <div class="row">
-      <div class="col col-6">Total</div>
-      <div class="col col-6" align="right">{{total | currency:'EUR':true}}</div>
+      <div class="col col-3">Total</div>
+      <div class="col col-3" align="center">{{total | currency:'EUR':true}}</div>
+      <div class="col col-6" align="right">
+          <button class="btn btn-danger mr-3" (click)="Delete_All()">Delete All</button>
+          <button class="btn btn-success mr-3" (click)="Save_All()">Save All</button>
+          <button class="btn btn-primary" (click)="Checkout_All()">
+            <span *ngIf="!status_all; else sent_content">Checkout All</span>
+            <ng-template #sent_content> <span>Shiped</span> </ng-template>
+          </button>
+      </div> 
     </div>
   </div>
 </div>
@@ -44,5 +52,5 @@
   <!-- <span>{{selectedproducts | json}}</span> -->
 
   <ng-template #noItemTemplate>
-    <div class="alert alert-info">No products are selected</div>
+    <div class="alert alert-danger">No products are selected</div>
   </ng-template>

@@ -46,3 +46,8 @@
     
     <button type="submit" class="btn btn-secondary" [disabled]="contactForm.invalid">Send Message</button>
 </form>
+
+
+<div class="mt-5 alert alert-info" *ngIf="response;">
+    {{response | json}}
+</div>

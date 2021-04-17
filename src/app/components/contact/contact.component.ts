@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   errors = [];
+  response : any;
   contactForm: FormGroup = this._fb.group({
     name: ['',Validators.required],
     email: ['',[Validators.required,Validators.email]],
@@ -27,6 +28,7 @@ export class ContactComponent implements OnInit {
       this._contactService.SendMessage(msg).subscribe(
         (res: any) => {
           console.log(res);
+          this.response = res;
           this.errors = [];
         },
         (err: any) => {
