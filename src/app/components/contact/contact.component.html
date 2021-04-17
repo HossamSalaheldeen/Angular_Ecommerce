@@ -4,50 +4,59 @@
     </div>
 </div>
 
+<div class="row alert alert-success mt-5" *ngIf="success_msg">
+    {{ success_msg }}
+</div>
+
 <form class="mt-4" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputName">Name*</label>
-            <input type="text" class="form-control" id="inputName" formControlName="name">
-            <div class="alert alert-danger p-1 mt-1"
+            <label for="inputName">Name<span class="text text-danger">*</span> </label>
+            <input type="text"
+            class="form-control"
+            id="inputName"
+            formControlName="name"
+            minlength="3"
+            >
+            <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('name').dirty && contactForm.get('name').hasError('required')" >
                 Name field is required
             </div>
+            <div class="text text-danger" *ngIf="contactForm.get('name').dirty && contactForm.get('name').errors?.minlength">title must be at least 3 character!</div>
+
         </div>
         <div class="form-group col-md-6">
-            <label for="inputEmail">Email*</label>
+            <label for="inputEmail">Email<span class="text text-danger">*</span></label>
             <input type="email" class="form-control" id="inputEmail" formControlName="email">
-            <div class="alert alert-danger p-1 mt-1"
+            <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('email').dirty && contactForm.get('email').hasError('required')" >
                 Email field is required
             </div>
-            <div class="alert alert-danger p-1 mt-1"
+            <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('email').dirty && contactForm.get('email').hasError('email')" >
                 Email field is not valid
             </div>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputSubject">Subject*</label>
+        <label for="inputSubject">Subject<span class="text text-danger">*</span></label>
         <input type="text" class="form-control" id="inputSubject" formControlName="subject">
-        <div class="alert alert-danger p-1 mt-1"
+        <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('subject').dirty && contactForm.get('subject').hasError('required')" >
                 Subject field is required
         </div>
     </div>
     <div class="form-group">
-        <label for="inputMessage">Message*</label>
+        <label for="inputMessage">Message<span class="text text-danger">*</span></label>
         <textarea type="text" id="inputMessage" class="form-control" rows="6" formControlName="message"></textarea>
-        <div class="alert alert-danger p-1 mt-1"
+        <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('message').dirty && contactForm.get('message').hasError('required')" >
                 Message field is required
         </div>
     </div>
-    
+
+    <div class="text text-warning">All (<span class="text text-danger">*</span>) marked fields are mandatory</div>
+    <hr>
+
     <button type="submit" class="btn btn-secondary" [disabled]="contactForm.invalid">Send Message</button>
 </form>
-
-
-<div class="mt-5 alert alert-info" *ngIf="response;">
-    {{response | json}}
-</div>
