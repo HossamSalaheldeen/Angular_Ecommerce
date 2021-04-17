@@ -1,22 +1,15 @@
-<div class="row" *ngIf="products; else homeLoadingTemplate">
+<div *ngIf="products; else homeLoadingTemplate">
+    <app-search-bar  [searchWord]="searchWord" ></app-search-bar>
+    <div class="row" >
     <app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
-
+</div>
     
 </div>
 
-<nav aria-label="Page navigation ">
-    <ul class="pagination justify-content-center mt-5">
-        <li class="page-item"><button class="page-link" 
-            (click)="onClick(currentPage-1)"
-            [disabled]="currentPage==1">Previous</button></li>
-        <li class="page-item"   *ngFor="let in of counter(pageTotalNumber) ;let i = index ">
-        <a class="page-link" (click)="onClick(i+1)">{{ i+1 }}</a>
 
-        </li>
-        <li class="page-item"><button class="page-link" (click)="onClick(currentPage+1)"
-        [disabled]="currentPage==pageTotalNumber">Next</button></li>
-    </ul>
-</nav>
+<app-pagination [currentPage]="currentPage"
+                [pageTotalNumber]="pageTotalNumber">
+</app-pagination>
 
 
 <ng-template #homeLoadingTemplate>loading.....</ng-template>

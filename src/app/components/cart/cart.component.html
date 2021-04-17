@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4">Cart</h1>
 
-<table class="table table-hover mt-4">
+<table class="table table-hover mt-4" *ngIf="selectedproducts; else noItemTemplate">
     <thead>
       <tr>
         <th scope="col">Image</th>
@@ -8,16 +8,38 @@
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">Total</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products; index as i">
-        <th scope="row">1</th>
-        <td>product.ProductPicUrl</td>
-        <td>product.Name</td>
-        <td>product.Price</td>
-        <td>Quantity</td>
-        <td>Total</td>
+      <tr *ngFor="let selectedproduct of selectedproducts; index as i">
+        <td><img [src]="selectedproduct.image" class="card-img-top"></td>
+        <td>{{selectedproduct.name}}</td>
+        <td>{{selectedproduct.price | currency:'EUR':true}}</td>
+        <td><input type="number" [(ngModel)]="selectedproduct.quantity"></td>
+        <td>{{selectedproduct.price * selectedproduct.quantity | currency:'EUR':true}} </td>
+        <td>
+          <button class="btn btn-danger mr-3" (click)="Delete(i)">Delete</button>
+          <button class="btn btn-success mr-3" (click)="Save(i)">Save</button>
+          <button class="btn btn-primary" (click)="Checkout(i)">Checkout</button>
+        </td>
       </tr>
     </tbody>
-  </table>
+</table>
+
+<div class="card">
+  <h5 class="card-header">Cart Totals</h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col col-6">Total</div>
+      <div class="col col-6" align="right">{{total | currency:'EUR':true}}</div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- <span>{{selectedproducts | json}}</span> -->
+
+  <ng-template #noItemTemplate>
+    <div class="alert alert-info">No products are selected</div>
+  </ng-template>

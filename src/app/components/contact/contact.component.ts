@@ -11,7 +11,7 @@ export class ContactComponent implements OnInit {
   errors = [];
   contactForm: FormGroup = this._fb.group({
     name: ['',Validators.required],
-    email: ['',Validators.required],
+    email: ['',[Validators.required,Validators.email]],
     subject: ['',Validators.required],
     message: ['',Validators.required],
   })
@@ -22,7 +22,6 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    //console.log(form);
     if(form.valid) {
       const msg = form.value;
       this._contactService.SendMessage(msg).subscribe(

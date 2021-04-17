@@ -21,6 +21,10 @@
             *ngIf="contactForm.get('email').dirty && contactForm.get('email').hasError('required')" >
                 Email field is required
             </div>
+            <div class="alert alert-danger p-1 mt-1"
+            *ngIf="contactForm.get('email').dirty && contactForm.get('email').hasError('email')" >
+                Email field is not valid
+            </div>
         </div>
     </div>
     <div class="form-group">
