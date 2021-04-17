@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center mb-2"> 
+
+    <div class="p-2 bd-highlight">
+    <label class="pos"for="limit">Limit:  </label>
+    </div>
+    <div class="p-2 bd-highlight">
+        <select class="form-control ml-1" id="limit"(click)="onClick($event);sendLimitNumber()">
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+            <option>20</option>
+            <option>25</option>
+        </select>
+    </div>
+
+
+    <!-- <div class="p-2 bd-highlight">
+        <label class="pos"for="limit">Search:  </label>
+        </div> -->
+    <div class="p-2 bd-highlight">
+        <form #courseform="ngForm" (ngSubmit)="onSubmit(courseform)">
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control"  name="productName" 
+                ngModel=""   #productName="ngModel" placeholder='Product Title' [value]="searchWord=='Product Title'?'':searchWord">
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-outline-dark btn-pos">Search</button>
+              </div>
+            </div>
+          </form>
+    </div>
+</div>

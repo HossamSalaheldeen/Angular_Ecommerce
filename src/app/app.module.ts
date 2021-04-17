@@ -1,3 +1,5 @@
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,7 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     NotfoundComponent,
     ProductItemComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    PaginationComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
