@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   pageTotalNumber:number;
   currentPage:number;
   searchWord:string;
+
+  loading_img: string = "/assets/images/loading.gif";
+
   private _routParamSub:Subscription;
   constructor(
     private _productService : ProductsService,
@@ -45,8 +48,8 @@ export class HomeComponent implements OnInit {
                 console.log("here");
               });
             }
-          })  
-      
+          })
+
         }
 
   counter(i: number) {

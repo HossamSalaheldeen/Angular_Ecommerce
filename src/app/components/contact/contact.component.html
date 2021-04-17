@@ -4,8 +4,8 @@
     </div>
 </div>
 
-<div class="row alert alert-success mt-5" *ngIf="success_msg">
-    {{ success_msg }}
+<div class="row alert alert-success mt-5 text-center" *ngIf="success_msg">
+    <span>{{ success_msg }}</span>
 </div>
 
 <form class="mt-4" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
