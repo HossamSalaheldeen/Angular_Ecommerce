@@ -22,11 +22,9 @@ export class CartComponent implements OnInit {
       this.total = 0;
       let i = 0;
       for (let selectedproduct of this.selectedproducts) {
-        this.total =
-          this.total + selectedproduct.price * selectedproduct.quantity;
+        this.total = this.total + selectedproduct.price * selectedproduct.quantity;
         this.status[i] = false;
         i = i + 1;
-        console.log(this.status);
       }
     }
 
@@ -44,12 +42,15 @@ export class CartComponent implements OnInit {
         'selectedProducts',
         JSON.stringify(this.selectedproducts)
       );
+      this.calculateTotal();
     }
   }
 
   Delete_All() {
     this.selectedproducts = [];
     localStorage.clear();
+    this.total = 0;
+
   }
 
   Save(index) {
@@ -57,6 +58,7 @@ export class CartComponent implements OnInit {
       'selectedProducts',
       JSON.stringify(this.selectedproducts)
     );
+    this.calculateTotal();
   }
 
   Save_All() {
@@ -64,6 +66,7 @@ export class CartComponent implements OnInit {
       'selectedProducts',
       JSON.stringify(this.selectedproducts)
     );
+    this.calculateTotal();
   }
 
   Checkout(index) {
@@ -75,6 +78,13 @@ export class CartComponent implements OnInit {
     let i = 0;
     for (i = 0; i < this.status.length; ++i) {
       this.status[i] = true;
+    }
+  }
+
+  calculateTotal(){
+    this.total = 0
+    for (let selectedproduct of this.selectedproducts) {
+      this.total = this.total + selectedproduct.price * selectedproduct.quantity;
     }
   }
 }
