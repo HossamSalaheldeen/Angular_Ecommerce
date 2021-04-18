@@ -11,7 +11,7 @@ export class ProductsService {
   constructor(private _http : HttpClient) { }
 
   getProducts(params?) {
-    return this._http.get(`${environment.baseUrl}/products`,{params});
+    return this._http.get(`${environment.baseUrl}/products?limit=${5}`,{params});
   }
 
   getProductsByPage(params?,limit?,q?){
