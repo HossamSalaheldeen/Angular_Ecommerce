@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-secondary btn-block" [disabled]="productForm.invalid"><i class="fa fa-cart-plus"></i> Add to cart</button>
+            <button type="submit" class="btn btn-success btn-block" [disabled]="productForm.invalid"><i class="fa fa-cart-plus"></i> Add to cart</button>
             <div class="alert alert-success" *ngIf="isSubmitted"> {{product?.Name}} added successfully to cart</div>
           </form>
         </div>

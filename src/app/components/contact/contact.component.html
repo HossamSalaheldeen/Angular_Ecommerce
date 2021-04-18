@@ -11,7 +11,7 @@
 <form class="mt-4" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputName">Name<span class="text text-danger">*</span> </label>
+            <label for="inputName" class="font-weight-bold">Name<span class="text text-danger">*</span> </label>
             <input type="text"
             class="form-control"
             id="inputName"
@@ -26,7 +26,7 @@
 
         </div>
         <div class="form-group col-md-6">
-            <label for="inputEmail">Email<span class="text text-danger">*</span></label>
+            <label for="inputEmail" class="font-weight-bold">Email<span class="text text-danger">*</span></label>
             <input type="email" class="form-control" id="inputEmail" formControlName="email">
             <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('email').dirty && contactForm.get('email').hasError('required')" >
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputSubject">Subject<span class="text text-danger">*</span></label>
+        <label for="inputSubject" class="font-weight-bold">Subject<span class="text text-danger">*</span></label>
         <input type="text" class="form-control" id="inputSubject" formControlName="subject">
         <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('subject').dirty && contactForm.get('subject').hasError('required')" >
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputMessage">Message<span class="text text-danger">*</span></label>
+        <label for="inputMessage" class="font-weight-bold">Message<span class="text text-danger">*</span></label>
         <textarea type="text" id="inputMessage" class="form-control" rows="6" formControlName="message"></textarea>
         <div class="text text-danger p-1 mt-1"
             *ngIf="contactForm.get('message').dirty && contactForm.get('message').hasError('required')" >
@@ -58,5 +58,5 @@
     <div class="text text-black-50 bold text-uppercase">All (<span class="text text-danger">*</span>) marked fields are mandatory.</div>
     <hr>
 
-    <button type="submit" class="btn btn-secondary" [disabled]="contactForm.invalid">Send Message</button>
+    <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
 </form>
