@@ -3,7 +3,7 @@
     <div class="row" >
     <app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
 </div>
-    
+
 </div>
 
 
@@ -12,4 +12,6 @@
 </app-pagination>
 
 
-<ng-template #homeLoadingTemplate>loading.....</ng-template>
+<ng-template #homeLoadingTemplate>
+  <img [src]="loading_img" width="100%" alt="">
+</ng-template>

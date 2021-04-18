@@ -17,6 +17,9 @@ export class ProductDetailsComponent implements OnInit {
   selectedProduct: any = {};
   productForm: FormGroup;
 
+  loading_img: string = "/assets/images/loading.gif";
+
+
   constructor(private _route: ActivatedRoute, private _productService : ProductsService, private _fb: FormBuilder, private _saveProductService:SaveProductService,private _router: Router) { }
 
   ngOnInit(): void {
