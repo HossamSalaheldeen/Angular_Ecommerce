@@ -2,10 +2,13 @@
     <app-search-bar  [searchWord]="searchWord" ></app-search-bar>
     <div class="row" >
     <app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
-    </div>
-    <app-pagination [currentPage]="currentPage"
-                [pageTotalNumber]="pageTotalNumber">
-    </app-pagination>
+</div>
+
+<app-pagination [currentPage]="currentPage"
+                [pageTotalNumber]="pageTotalNumber"
+                [totalItems]="totalItems">
+</app-pagination>
+
 </div>
 
 <ng-template #homeLoadingTemplate>

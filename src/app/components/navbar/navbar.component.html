@@ -1,23 +1,25 @@
-<nav class="navbar navbar-light navbar-expand-md bg-light justify-content-center">
-    <button (click)="toggleNavbar()" class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse justify-content-between align-items-center w-100" [class.show]="isopen" id="collapsingNavbar2">
-        <ul class="navbar-nav mx-auto text-center">
-            <li class="nav-item active"  [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
-                <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/about">About</a>
-            </li>
-
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/cart">Cart</a>
-            </li>
-
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/contact">Contact Us</a>
-            </li>
-        </ul>
+<nav class="navbar navbar-light navbar-expand-md bg-light justify-content-center mb-4" style="border-radius: 0 !important;">
+    <div class="container">
+        <button (click)="toggleNavbar()" class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse justify-content-between align-items-center w-100" [class.show]="isopen" id="collapsingNavbar2">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item active"  [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/about">About</a>
+                </li>
+    
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/cart">Cart</a>
+                </li>
+    
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>

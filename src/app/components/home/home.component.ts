@@ -14,6 +14,7 @@ import { CommonService } from 'src/app/services/common-functions.service';
 export class HomeComponent implements OnInit {
   products : Product[];
   pageTotalNumber:number;
+  totalItems:number;
   currentPage:number;
   searchWord:string;
 
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
               this._productService.getProductsByPage(queryParamMap.get('page'),queryParamMap.get('limit'),queryParamMap.get('q')).subscribe((res:any)=>{
                 this.products = res.data;
                 this.pageTotalNumber = res.total_pages;
+                this.totalItems = res.total_items;
                 this.currentPage = Number(queryParamMap.get('page')) || 1;
                 this.searchWord = queryParamMap.get('q');
                 console.log("getProductsByPage " + queryParamMap.get('q'));
@@ -43,8 +45,10 @@ export class HomeComponent implements OnInit {
                 this.products = res.data;
                 this.pageTotalNumber = res.total_pages;
                 this.currentPage = Number(queryParamMap.get('page')) || 1;
+                this.totalItems = res.total_items;
                 this._commonServices.clearStrimg();
-                this.searchWord = 'Product Title'
+                this.searchWord = 'Product Title';
+                console.log("totalItems " +  this.totalItems);
                 console.log("here");
               });
             }

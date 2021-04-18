@@ -1,6 +1,6 @@
 <div class="col col-12 col-md-6 col-lg-3">
     <div class="card mt-4" style="width: 21rem;" >
-        <h5 class="card-title text-primary">{{product?.Name | titlecase}}</h5>
+        <h5 class="card-title text-primary text-center mt-4">{{product?.Name | titlecase}}</h5>
         <div class="card-body">
         <img [src]="product?.ProductPicUrl" class="card-img-top" [routerLink]="[product.ProductId]">
         <p class="card-text text-danger">{{product?.Price | currency:'EUR':true}}</p>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-secondary btn-block" [disabled]="productForm.invalid">Add to cart</button>
+            <button type="submit" class="btn btn-secondary btn-block" [disabled]="productForm.invalid"><i class="fa fa-cart-plus"></i> Add to cart</button>
             <div class="alert alert-success" *ngIf="isSubmitted"> {{product?.Name}} added successfully to cart</div>
           </form>
         </div>

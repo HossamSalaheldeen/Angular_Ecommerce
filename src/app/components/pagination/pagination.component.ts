@@ -12,7 +12,8 @@ export class PaginationComponent implements OnInit {
 
   @Input() currentPage;
   @Input() pageTotalNumber;
-
+  @Input() totalItems;
+  inputPageNumber:number;
   pageNumber:number=1;
   limit:number = 5;
   constructor( private _navRoute:Router,
@@ -33,5 +34,15 @@ onClick(num):void{
 receiveNumber(limitNumber):void{
   this.limit = limitNumber;
   console.log('receiveNumber : ' + this.limit);
+}
+
+test(num):void{
+
+  this.inputPageNumber = num.target.value;
+
+  if(this.inputPageNumber > 0 && this.inputPageNumber < this.pageTotalNumber){
+    this.onClick(this.inputPageNumber);
+  }
+  console.log("input : "+num.target.value);
 }
 }

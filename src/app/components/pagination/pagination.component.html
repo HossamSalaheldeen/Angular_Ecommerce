@@ -1,13 +1,33 @@
 <nav aria-label="Page navigation " (limitNumberEvent)="receiveNumber($event)">
     <ul class="pagination justify-content-center mt-5">
-        <li class="page-item"><button class="page-link" 
-            (click)="onClick(currentPage-1)"
-            [disabled]="currentPage==1" [ngClass]="{'test': currentPage==1}">Previous</button></li>
-        <li class="page-item"   *ngFor="let in of counter(pageTotalNumber) ;let i = index ">
+        
+            <li class="page-item">
+                <button class="page-link" 
+                        (click)="onClick(currentPage-1)"
+                        [disabled]="currentPage==1" 
+                        [ngClass]="{'test': currentPage==1}">
+                    <span aria-hidden="true">&laquo;</span>
+                </button></li>
+             
+            <input type="text" id="input-page" [value]="currentPage" (input)="test($event)">
+        <!-- <li class="page-item"   *ngFor="let in of counter(pageTotalNumber) ;let i = index ">
         <a class="page-link" (click)="onClick(i+1)">{{ i+1 }}</a>
+        
+
+        </li> -->
+        <li class="page-item"></li>
+    
+        <li class="page-item">
+            <button class="page-link" 
+                    (click)="onClick(currentPage+1)"
+                    [disabled]="currentPage==pageTotalNumber"
+                    [ngClass]="{'test': currentPage==pageTotalNumber}">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
 
         </li>
-        <li class="page-item"><button class="page-link" (click)="onClick(currentPage+1)"
-        [disabled]="currentPage==pageTotalNumber" [ngClass]="{'test': currentPage==pageTotalNumber}"> Next</button></li>
     </ul>
 </nav>
+<div class="text-center mt-1 mb-3" >
+    Total Products: <span>{{totalItems}}</span>
+</div>
