@@ -1,6 +1,6 @@
 <div class="col col-12 col-md-6 col-lg-3">
     <div class="card mt-4" style="width: 21rem;" >
-        <h5 class="card-title text-primary text-center mt-4">{{product?.Name | titlecase}}</h5>
+        <h5 class="card-title text-primary text-center mt-4" [routerLink]="[product.ProductId]">{{product?.Name | titlecase}}</h5>
         <div class="card-body">
         <img [src]="product?.ProductPicUrl" class="card-img-top" [routerLink]="[product.ProductId]">
         <p class="card-text text-danger">{{product?.Price | currency:'EUR':true}}</p>
@@ -11,6 +11,7 @@
                     <input type="hidden" formControlName="image">
                     <input type="hidden" formControlName="name">
                     <input type="hidden" formControlName="price">
+                    <input type="hidden" formControlName="maxQuantity">
                     <input type="number" min="0" class="form-control" formControlName="quantity">
                     <div class="alert alert-danger p-1 mt-1"
                     *ngIf="productForm.get('quantity').dirty && productForm.get('quantity').hasError('required')" >

@@ -8,7 +8,6 @@ import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes:Routes = [
-  
   {
     path: '',
     component: HomeComponent
@@ -37,8 +36,6 @@ const routes:Routes = [
     path: '**', 
     component: NotfoundComponent
   },
-  
-  
 ];
 
 @NgModule({

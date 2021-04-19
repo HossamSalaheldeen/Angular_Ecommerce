@@ -16,7 +16,15 @@
         <td><img [src]="selectedproduct.image" class="card-img-top"></td>
         <td>{{selectedproduct.name}}</td>
         <td>{{selectedproduct.price | currency:'EUR':true}}</td>
-        <td><input type="number" min="0" class= "pl-2" [(ngModel)]="selectedproduct.quantity"></td>
+        <td>
+          <input #amount type="number" min="1" [max]="selectedproduct.maxQuantity" class= "form-control" [(ngModel)]="selectedproduct.quantity">
+          <div class="alert alert-danger" 
+              *ngIf="amount.value >= selectedproduct?.maxQuantity" >
+              max value = {{selectedproduct?.maxQuantity}}
+          </div>
+          <div class="alert alert-danger" 
+              *ngIf="amount.value <= 1" >min value = 1</div>
+        </td>
         <td>{{selectedproduct.price * selectedproduct.quantity | currency:'EUR':true}} </td>
         <td>
           <button class="btn btn-danger mr-3" (click)="Delete(i)">Delete</button>
