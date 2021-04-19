@@ -19,11 +19,11 @@
         <td>
           <input #amount type="number" min="1" [max]="selectedproduct.maxQuantity" class= "form-control" [(ngModel)]="selectedproduct.quantity">
           <div class="alert alert-danger" 
-              *ngIf="amount.value >= selectedproduct?.maxQuantity" >
+              *ngIf="amount.value > selectedproduct?.maxQuantity" >
               max value = {{selectedproduct?.maxQuantity}}
           </div>
           <div class="alert alert-danger" 
-              *ngIf="amount.value <= 1" >min value = 1</div>
+              *ngIf="amount.value <= 0" >must be at least one!</div>
         </td>
         <td>{{selectedproduct.price * selectedproduct.quantity | currency:'EUR':true}} </td>
         <td>

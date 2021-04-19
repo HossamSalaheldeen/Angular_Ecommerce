@@ -12,7 +12,7 @@
                     <input type="hidden" formControlName="name">
                     <input type="hidden" formControlName="price">
                     <input type="hidden" formControlName="maxQuantity">
-                    <input type="number" min="0" class="form-control" formControlName="quantity">
+                    <input type="number" min="0" [max]="product.Quantity"class="form-control" formControlName="quantity">
                     <div class="alert alert-danger p-1 mt-1"
                     *ngIf="productForm.get('quantity').dirty && productForm.get('quantity').hasError('required')" >
                         Quantity field is required
