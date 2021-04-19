@@ -14,6 +14,10 @@ const routes:Routes = [
     component: HomeComponent
   },
   {
+    path: 'Angular_Ecommerce',
+    redirectTo: ''
+  },
+  {
     path: 'about',
     component: AboutComponent
   },
